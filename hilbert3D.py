@@ -5,7 +5,6 @@ import math
 if __name__ == '__main__':
 
     hilbert = HilbertCurve3D(2)
-    # hilbert.get_points_list()
 
     ox = np.matrix([[1, 0, 0, 0],
                    [0, math.cos(math.radians(32.5)), -math.sin(math.radians(32.5)), 0],
@@ -17,10 +16,10 @@ if __name__ == '__main__':
                    [-math.sin(math.radians(-38)), 0, math.cos(math.radians(-38)), 0],
                    [0, 0, 0, 1]])
 
-    print(ox)
-    print(oy)
+    # print(ox)
+    # print(oy)
 
-    for point in hilbert.points_list:
+    for point in hilbert:
 
         p = np.matrix([[point[0]],
                        [point[1]],
