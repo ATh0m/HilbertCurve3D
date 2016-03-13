@@ -7,6 +7,13 @@ class Vector:
         values = tuple(-1 * value for value in self)
         return Vector(*values)
 
+    def __add__(self, other):
+        result = tuple(a + b for a, b in zip(self, other))
+        return Vector(*result)
+
+    def __sub__(self, other):
+        return self + (-other)
+
     def __str__(self):
         return "[" + str(self.values)[1:-1] + "]"
 
