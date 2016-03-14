@@ -16,8 +16,7 @@ if __name__ == '__main__':
     y_angle = float(sys.argv[9])
 
     hilbert_curve_3d = HilbertCurve3D(n, u)
-    transformation = Transformation(hilbert_curve_3d, s, d, x, y, z, x_angle, y_angle)
-    postscript_generator = PostscriptGenerator(transformation, s)
+    hilbert_curve_3d_transformation = Transformation(hilbert_curve_3d, d, x, y, z, x_angle, y_angle)
+    hilbert_curve_3d_transformation_postscript_generator = PostscriptGenerator(hilbert_curve_3d_transformation, s)
 
-    postscript_generator.generate_postscript()
-    # postscript_generator.print_points()
+    hilbert_curve_3d_transformation_postscript_generator.generate_postscript()

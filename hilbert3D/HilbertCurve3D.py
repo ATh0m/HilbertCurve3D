@@ -1,5 +1,4 @@
-from .Vector import Vector
-from .Point import Point
+from .Math import Point, Vector
 
 
 class HilbertCurve3D:
@@ -8,21 +7,19 @@ class HilbertCurve3D:
         self.n = n
         self.size = size
 
-        length = 2**n - 1
-        length_curve = size / length
+        length = (2**n) - 1
+        length_line = size / length
 
-        self.start_point = Point(1/2 * length * length_curve,
-                                 1/2 * length * length_curve,
-                                 1/2 * length * length_curve)
+        self.center_vector = Vector(1/2 * size,
+                                    1/2 * size,
+                                    -1/2 * size)
 
-        self.last_point = Point(1/2 * length * length_curve,
-                                1/2 * length * length_curve,
-                                1/2 * length * length_curve)
+        self.last_point = Point(0, 0, 0)
 
         self.points_generator = self.generate_points(self.n,
-                                                     Vector(0, -length_curve, 0),
-                                                     Vector(0, 0, -length_curve),
-                                                     Vector(-length_curve, 0, 0))
+                                                     Vector(0, -length_line, 0),
+                                                     Vector(-length_line, 0, 0),
+                                                     Vector(0, 0, length_line))
 
     def __iter__(self):
         return self.points_generator
@@ -44,7 +41,7 @@ class HilbertCurve3D:
 
             self.last_point -= v1
 
-            yield from self.generate_points(n-1, -v1, -v2, v3)
+            yield from self.generate_points(n - 1, -v1, -v2, v3)
 
             self.last_point += v3
 
